@@ -1,9 +1,12 @@
 package deck;
 
 import java.util.*;
+import poker.*;
 
 public class CardCollection extends ArrayList<Card> {
 	private static final long serialVersionUID = -233632531271122467L;
+	private Rank high;
+	private HandType handType;
 	
 	public void print() {
 		for (Card c : this) {
