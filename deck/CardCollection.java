@@ -1,16 +1,18 @@
 package deck;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.Stack;
+
 import poker.*;
 
-public class CardCollection extends ArrayList<Card> {
-	private static final long serialVersionUID = -233632531271122467L;
-	private Rank high;
-	private HandType handType;
+public class CardCollection extends Stack<Card> {
+	private static final long serialVersionUID = 1L;
+
+	private int high;
 	
 	public void print() {
 		for (Card c : this) {
-			c.print();
+			System.out.println(c.toString());
 		}
 		
 		System.out.println();
@@ -23,23 +25,36 @@ public class CardCollection extends ArrayList<Card> {
 	public void addAllStandard() {
 		for (Suit s : Suit.values()) {
 			for (Rank r : Rank.values()) {
-				Card card = new Card(s, r);
-				this.add(card);
+				Card c = new Card(s, r);
+				
+				this.push(c);
 			}
 		}
 	}
 	
-	public Card pop() {
-		return this.remove(0);
-	}
-	
 	public CardCollection pop(int num) {
-		CardCollection dealt = new CardCollection();
+		CardCollection out = new CardCollection();
 		
 		for (int i = 0; i < num; i++) {
-			dealt.add(this.pop());
+			if (!this.isEmpty()) out.push(this.pop());
+			else break;
 		}
 		
-		return dealt;
+		return out;
+	}
+
+	public HandType getHandType() {
+        return HandType.FLUSH;
+    }
+
+	public static void main(String[] args) {
+		CardCollection c = new CardCollection();
+		c.addAllStandard();
+		
+		CardCollection d;
+		d = c.pop(5);
+		
+		d.print();
+		System.out.println();
 	}
 }
