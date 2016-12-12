@@ -43,10 +43,6 @@ public class CardCollection extends Stack<Card> {
 		return out;
 	}
 
-	public HandType getHandType() {
-        return HandType.FLUSH;
-    }
-
 	public static void main(String[] args) {
 		CardCollection c = new CardCollection();
 		c.addAllStandard();

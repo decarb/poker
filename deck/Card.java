@@ -8,6 +8,14 @@ public class Card {
 		this.suit = suit;
 		this.rank = rank;
 	}
+
+	public Rank getRank() {
+		return this.rank;
+	}
+
+	public Suit getSuit() {
+		return this.suit;
+	}
 	
 	public void print() {
 		System.out.println(rank.toString() + " of " + suit.toString());
